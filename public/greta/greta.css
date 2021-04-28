@@ -1,0 +1,101 @@
+@font-face {
+    font-family: hateBook;
+    src: url(KlavikaRegular-TF.otf);
+  }
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #F2F3F5;
+    color: #050505;
+}
+
+#canvas-holder canvas{
+    position: fixed;
+    top: 0;
+}
+
+.header {
+    height: 32px;
+    background-color: cornflowerblue;
+    color: white;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+}
+
+.logo {
+    font-size: 1.8em;
+    font-family: hateBook;
+}
+
+.profile {
+    margin-top: -4px;
+    margin-right: 32px;
+}
+
+.profile-name {
+    margin-top: -16px;
+}
+
+.profile-pic {
+    width: 40px;
+    border-radius: 50%;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.love {
+    background-color: plum;
+}
+
+.container {
+    padding-top: 64px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#posts {
+    padding: 16px;
+    width: 60%;
+}
+
+.post {
+    border-radius: 4px;
+    background-color: white;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.text {
+    margin-top: 16px;
+}
+
+.user-name {
+    font-weight: bold;
+}
+
+#sidebar {
+    border-radius: 4px;
+    width: 30%;
+    background-color: white;
+    padding: 16px;
+}
+
+#sidebar h2 {
+    font-size: 17px;
+    color: rgb(101, 103, 107);
+}
+
+#controls button {
+    margin: 8px
+}
+
+#ads {
+    margin-top: 200px;
+}
