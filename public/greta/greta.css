@@ -116,3 +116,10 @@ body {
 video {
     filter: grayscale(100%)
 }
+
+.video video {
+        width: 480px;
+        height: 320px;
+        object-fit: cover;
+        padding-top: 16px
+}
