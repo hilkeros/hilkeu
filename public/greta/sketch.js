@@ -43,6 +43,7 @@ const myPeer = new Peer(undefined, {
   port: '3000',
   host: 'localhost'
 })
+let streams = [];
 
 navigator.mediaDevices.getUserMedia({
   video: true,
@@ -54,7 +55,8 @@ navigator.mediaDevices.getUserMedia({
     call.answer(stream)
     const video = document.createElement('video')
     call.on('stream', userVideoStream => {
-      addVideoStreamToPost(video, userVideoStream);
+      // addVideoStreamToPost(video, userVideoStream);
+      streams.push(userVideoStream)
     })
   })
 
@@ -73,10 +75,9 @@ myPeer.on('open', id => {
 
 function connectToNewUser(userId, stream) {
   const call = myPeer.call(userId, stream)
-  const video = document.createElement('video')
   call.on('stream', userVideoStream => {
     // addVideoStream(video, userVideoStream)
-    addVideoStreamToPost(video, userVideoStream)
+    addVideoStreamToPost(userVideoStream)
   })
   call.on('close', () => {
     video.remove()
@@ -85,13 +86,13 @@ function connectToNewUser(userId, stream) {
   peers[userId] = call
 }
 
-function addVideoStreamToPost(video, stream) {
-  console.log('adding video')
+function addVideoStreamToPost(stream) {
+  const video = document.createElement('video')
   video.srcObject = stream
   video.addEventListener('loadedmetadata', () => {
     video.play()
   })
-  const container = document.getElementsByClassName('video')[numberOfConnections*2]
+  const container = document.getElementsByClassName('video')[numberOfConnections * 2 + 1]
   container.replaceChild(video, container.firstElementChild)
   numberOfConnections++
 }
@@ -178,6 +179,7 @@ function toggleLove() {
 }
 
 function createPost(text, index) {
+  console.log('number of streams: ', streams.length)
   const even = index % 2 === 0;
   const userName = even ? 'Hilke' : 'Gregory';
   const profilePic = even ? './images/hilke.png' : './images/gregory.png';
@@ -188,12 +190,24 @@ function createPost(text, index) {
   createImg(profilePic, userName).parent(userWrapper).class('profile-pic');
   createSpan(userName).parent(userWrapper).class('user-name');
   createDiv(text).parent(postWrapper).class('text');
-
   let videoWrapper = createDiv().parent(postWrapper).class('video');
-  let myVideo = createVideo(url);
-  myVideo.parent(videoWrapper);
-  myVideo.volume(0);
-  videos.push(myVideo);
+
+  if (!even && streams.length > 0) {
+    const video = document.createElement('video')
+    video.srcObject = streams[0]
+    video.addEventListener('loadedmetadata', () => {
+      video.play()
+    })
+    videoWrapper.child(video)
+    streams.shift()
+  } else {
+    let myVideo = createVideo(url);
+    myVideo.parent(videoWrapper);
+    myVideo.volume(0);
+    videos.push(myVideo);
+  }
+
+
   return postWrapper;
 }
 
