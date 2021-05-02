@@ -40,8 +40,8 @@ const peers = {}
 let numberOfConnections = 0;
 const myPeer = new Peer(undefined, {
   path: '/peerjs/server',
-  port: '3000',
-  host: 'localhost'
+  port: HOST === 'localhost' ? PORT : null,
+  host: HOST
 })
 let streams = [];
 
