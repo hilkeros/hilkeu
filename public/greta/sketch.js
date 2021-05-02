@@ -49,9 +49,11 @@ navigator.mediaDevices.getUserMedia({
   video: true,
   audio: false
 }).then(stream => {
+  console.log('opened camera')
   addVideoStream(myVideo, stream)
 
   myPeer.on('call', call => {
+    console.log('call start')
     call.answer(stream)
     const video = document.createElement('video')
     call.on('stream', userVideoStream => {
@@ -70,6 +72,7 @@ socket.on('user-disconnected', userId => {
 })
 
 myPeer.on('open', id => {
+  console.log('opening socket')
   socket.emit('join-room', ROOM_ID, id)
 })
 
@@ -107,12 +110,13 @@ function addVideoStream(video, stream) {
 ///
 
 function preload() {
-  song = loadSound(songUrl);
-  heart = loadImage('./images/heart.png');
+  song = loadSound(songUrl)
+  heart = loadImage('./images/heart.png')
 
 }
 
 function setup() {
+  console.log('starting setup')
   canvas = createCanvas(windowWidth * 0.7, windowHeight);
   canvas.parent('canvas-holder');
   // background('rgba(0, 0, 0, 0.5)');
