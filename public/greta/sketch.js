@@ -72,14 +72,15 @@ socket.on('user-disconnected', userId => {
 })
 
 myPeer.on('open', id => {
-  console.log('opening socket')
   socket.emit('join-room', ROOM_ID, id)
+  console.log('opening socket')
 })
 
 function connectToNewUser(userId, stream) {
   const call = myPeer.call(userId, stream)
   call.on('stream', userVideoStream => {
     // addVideoStream(video, userVideoStream)
+    console.log('adding new user stream')
     addVideoStreamToPost(userVideoStream)
   })
   call.on('close', () => {
