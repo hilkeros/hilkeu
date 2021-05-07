@@ -3,6 +3,14 @@ const express = require('express')
 const { ExpressPeerServer } = require('peer')
 const port = process.env.PORT || 3000
 const host = process.env.BASE_URL || 'localhost'
+const peerConfig = host === 'localhost' ? {
+    path: '/peerjs/server',
+    port: port.toString(),
+    host: host
+} : {
+    path: '/peerjs/server',
+    host: host
+}
 
 const app = express()
 const server = require('http').Server(app)
@@ -18,11 +26,11 @@ app.get('/hi', (req, res) => {
 })
 
 app.get('/hi/:room', (req, res) => {
-    res.render('room', { roomId: req.params.room, port: port.toString(), host: host })
+    res.render('room', { roomId: req.params.room, peerConfig: peerConfig })
 })
 
 app.get('/greta', (req, res) => {
-    res.render('greta', { port: port.toString(), host: host })
+    res.render('greta', { peerConfig: peerConfig })
 })
 
 io.on('connection', socket => {

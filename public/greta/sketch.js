@@ -39,9 +39,7 @@ const videoGrid = document.getElementById('video-grid')
 const peers = {}
 let numberOfConnections = 0;
 const myPeer = new Peer(undefined, {
-  path: '/peerjs/server',
-  port: HOST === 'localhost' ? PORT : null,
-  host: HOST
+ PEER_CONFIG
 })
 let streams = [];
 
