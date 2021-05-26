@@ -24,6 +24,9 @@ function setUpStream(stream) {
   console.log('opened camera')
   const myVideo = document.createElement('video')
   myVideo.muted = true
+  myVideo.playsinline = true
+  myVideo.width = 570
+  myVideo.height = 360
   addMyVideoStream(myVideo, stream)
 
   myPeer.on('call', call => {
@@ -60,6 +63,8 @@ function connectToNewUser(userId, stream) {
 
 function addVideoStreamToPost(stream) {
   const video = document.createElement('video')
+  video.width = 570
+  video.height = 360
   video.srcObject = stream
   video.addEventListener('loadedmetadata', () => {
     video.play()
@@ -71,6 +76,8 @@ function addVideoStreamToPost(stream) {
 
 function addMyVideoStream(video, stream) {
   video.srcObject = stream
+  video.width = 570
+  video.height = 360
   video.addEventListener('loadedmetadata', () => {
     video.play()
   })

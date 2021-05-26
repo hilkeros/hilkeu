@@ -1,110 +1,193 @@
-let texts = [
-  `Why lose time on hating her. She knows that we're losing time`,
-  `Why lose time on blaming her. You know she won't give a damn`,
-  `I think you have bigger sorrows. You'd rather tell me about those`,
-  `Don't you think there is no tomorrow for the bloody things that you chose`,
-  `&#127930;`,
-  `Love me, tell me. I don't think that you are doing fine`,
-  `Hold me, sorry. It's not that easy to cross the line`,
-  `FOR THE PEOPLE LOSING TIME`,
-  `&#127930;`,
-  `So brave to make fun of her, if you don't look into her eyes`,
-  `So easy to bring others down, if you can't handle your own lies`,
-  `I think you have bigger troubles, you'd rather tell me about those`,
-  `Let's get rid of those bubbles, enough of that overdose`,
-  `Love me, tell me. I don't think that you are doing fine`,
-  `Hold me, sorry. It's not that easy to cross the line`,
-  `FOR THE PEOPLE LOSING TIME`,
-];
-
 let canvas;
 
-let videoUrl = 'https://dl.dropboxusercontent.com/s/rf2mywto62mkb4s/hilke-trimmed.mov';
-let videoUrl2 = 'https://dl.dropboxusercontent.com/s/oe2qqi3qf0iarqa/aline.mov?dl=0'
-let videos = [];
-let songUrl = 'https://dl.dropboxusercontent.com/s/zkhoe2ujn2h0uxa/greta.mp3';
+const { Engine, World, Bodies, Svg, Vertices } = Matter;
+let engine;
+let world;
+let hearts = [];
+let ground;
+let heartImage, purpleHeartImage, blueHeartImage;
+let heartVertices;
+let path;
+let logo;
+let header;
+
 let song;
 let musicButton;
-let heart;
-let showHearts = false;
-let system;
+
+let videos = [];
+let stroboOn = false;
+let backgroundIsWhite = false;
 
 function preload() {
-  song = loadSound(songUrl)
-  heart = loadImage('./images/heart.png')
-
+  heartImage = loadImage('images/heart.png');
+  purpleHeartImage = loadImage('images/heartpurple.png');
+  blueHeartImage = loadImage('images/heartblue.png');
+  
+  song = loadSound(songUrl);
 }
 
 function setup() {
-  canvas = createCanvas(windowWidth * 0.7, windowHeight);
+  const withCameraButton = select('#start-with-camera');
+  withCameraButton.show();
+  const withoutCameraButton = select('#start-without-camera')
+  withoutCameraButton.show();
+  withCameraButton.mousePressed(hideStartModalAndStartCamera);
+  withoutCameraButton.mousePressed(hideStartModal);
+
+  canvas = createCanvas(windowWidth, windowHeight);
   canvas.parent('canvas-holder');
-  // background('rgba(0, 0, 0, 0.5)');
-  noStroke()
-  fill('plum');
+  rectMode(CENTER);
+  engine = Engine.create();
+  world = engine.world;
+  let options = {
+    isStatic: true
+  };
+
+  ground = Bodies.rectangle(width / 2, height - 2, width, 8, options);
+  World.add(world, ground);
+  path = document.getElementById('heart-path');
+  heartVertices = Svg.pathToVertices(path);
+  heartVertices = decomp.quickDecomp(heartVertices);
 
   texts.map(createPost);
 
-  musicButton = createButton('Play music').parent('controls').mousePressed(toggleSong);
-  createButton('Love').parent('controls').mousePressed(toggleLove);
-  createButton('Start camera').parent('controls').mousePressed(turnOnVideo);
+  let loveButton = select('#love');
+  loveButton.mousePressed(showHearts);
 
-  system = new ParticleSystem(createVector(width / 2, 100));
+  musicButton = select('#music');
+  musicButton.mousePressed(toggleSong);
 
-  song.addCue(2, toggleLove);
-  song.addCue(5, toggleLove);
-  song.addCue(83, toggleLove);
-  song.addCue(89, toggleLove);
-  song.addCue(94, toggleLove);
-  song.addCue(99, toggleLove);
+  let cameraButton = select('#camera');
+  cameraButton.mousePressed(turnOnVideo);
+
+  let stroboButton = select('#share');
+  stroboButton.mousePressed(toggleStrobo);
+
+  logo = select('.logo');
+  header = select('.header');
+
+  // song.addCue(2, showHearts);
+  // song.addCue(5, hideHearts);
+  song.addCue(83.5, showHearts);
+  song.addCue(88.8, hideHearts);
+  song.addCue(94, showHearts);
+  song.addCue(99.2, hideHearts);
+  song.addCue(104.5, toggleStrobo);
+  song.addCue(125.2, toggleStrobo);
+  song.addCue(187, showHearts);
+  song.addCue(192.2, hideHearts);
+  song.addCue(198.2, showHearts);
+  song.addCue(203.8, hideHearts);
+  song.addCue(208.5, toggleStrobo);
+  song.addCue(229.5, toggleStrobo);
+
+  song.onended(songEnded);
 }
 
 function draw() {
-  if (showHearts) {
-    // for (let i = 0; i < 20; i++) {
-    //     ellipse(random(windowWidth), random(windowHeight), 10);
-    // }
-    system.addParticle();
-    system.run();
+  if (stroboOn) {
+
+    if (frameCount % 22 === 0) {
+      toggleBackground();
+    }
+
+    if (backgroundIsWhite) {
+      background('rgba(255, 255, 255, 0.05)');
+    } else {
+      clear();
+    }
   } else {
     clear();
   }
+
+  Engine.update(engine, 1000 / 70);
+
+  hearts.map((heart, index) => {
+    heart.show();
+    if (heart.isDead()) {
+      heart.die();
+      hearts.splice(index, 1);
+    }
+  });
+
+  noStroke();
+  fill(255);
+  rect(width / 2, height - 10, width, 16);
+
+  if (song.isPlaying()) {
+    if (frameCount % 60 === 0) {
+      videos.map(sync);
+    }
+  }
+  
+}
+
+windowResized = function() {
+  resizeCanvas(windowWidth, windowHeight);
+}
+
+function hideStartModal() {
+  select('#start').hide();
+  select('.header').style('display', 'flex');
+  select('.container').style('display', 'flex');
+}
+
+function hideStartModalAndStartCamera() {
+  hideStartModal();
+  turnOnVideo();
+}
+
+function showHearts() {
+  for (let i = 0; i < 6; i++) {
+    hearts.push(new Heart(random(width / 2) + width / 4, random(height / 5), 200));
+  }
+
+  logo.html('lovebook');
+  header.addClass('love');
+  setTimeout(hideHearts, 4000);
+}
+
+function hideHearts() {
+  logo.html('hatebook');
+  header.removeClass('love');
+}
+
+function toggleBackground() {
+  backgroundIsWhite = !backgroundIsWhite;
+}
+
+function toggleStrobo() {
+  stroboOn = !stroboOn;
 }
 
 function toggleSong() {
   if (song.isPlaying()) {
     song.pause();
     videos.map(video => video.pause());
-    musicButton.html('Play Music');
+    musicButton.html('play music');
 
   } else {
     song.play();
-    videos.map(sync);
-    musicButton.html('Pause Music');
+    videos.map(video => video.play());
+    musicButton.html('pause music');
   }
+}
+
+function songEnded() {
+  musicButton.html('play music');
 }
 
 function sync(video) {
-  video.time(song.currentTime());
-  video.play();
-}
-
-function toggleLove() {
-  const logo = select('.logo');
-  const header = select('.header');
-  if (logo.html() === 'hatebook') {
-    logo.html('lovebook');
-    showHearts = true;
-  } else {
-    logo.html('hatebook');
-    showHearts = false;
+  const drift = abs(song.currentTime() - video.time());
+  if (drift > 0.1) {
+    video.time(song.currentTime());
   }
-  header.toggleClass('love');
 }
 
 function createPost(text, index) {
   const even = index % 2 === 0;
-  const userName = even ? 'Hilke' : 'Gregory';
-  const profilePic = even ? './images/hilke.png' : './images/gregory.png';
+  const userName = even ? 'hilke' : 'gregory';
+  const profilePic = even ? 'images/hilke.png' : 'images/gregory.png';
   const url = even ? videoUrl : videoUrl2;
 
   const postWrapper = createDiv().parent('#posts').class('post');
@@ -112,8 +195,8 @@ function createPost(text, index) {
   createImg(profilePic, userName).parent(userWrapper).class('profile-pic');
   createSpan(userName).parent(userWrapper).class('user-name');
   createDiv(text).parent(postWrapper).class('text');
-  let videoWrapper = createDiv().parent(postWrapper).class('video');
 
+  let videoWrapper = createDiv().parent(postWrapper).class('video');
   let myVideo = createVideo(url);
   myVideo.parent(videoWrapper);
   myVideo.volume(0);
@@ -122,61 +205,9 @@ function createPost(text, index) {
   return postWrapper;
 }
 
-///
-/// PARTICLE LOGIC
-///
 
 
-// A simple Particle class
-let Particle = function (position) {
-  this.acceleration = createVector(0, 0.05);
-  this.velocity = createVector(random(-5, 5), random(-5, 5));
-  this.position = position.copy();
-  this.lifespan = 255;
-};
-
-Particle.prototype.run = function () {
-  this.update();
-  this.display();
-};
-
-// Method to update position
-Particle.prototype.update = function () {
-  this.velocity.add(this.acceleration);
-  this.position.add(this.velocity);
-  this.lifespan -= 10;
-};
-
-// Method to display
-Particle.prototype.display = function () {
-  stroke(127, 0, 0, this.lifespan);
-  strokeWeight(2);
-  // fill(127, this.lifespan);
-  // ellipse(this.position.x, this.position.y, 12, 12);
-  tint(255, this.lifespan);
-  image(heart, this.position.x, this.position.y, 40, 40);
-};
-
-// Is the particle still useful?
-Particle.prototype.isDead = function () {
-  return this.lifespan < 0;
-};
-
-let ParticleSystem = function (position) {
-  this.origin = position.copy();
-  this.particles = [];
-};
-
-ParticleSystem.prototype.addParticle = function () {
-  this.particles.push(new Particle(this.origin));
-};
-
-ParticleSystem.prototype.run = function () {
-  for (let i = this.particles.length - 1; i >= 0; i--) {
-    let p = this.particles[i];
-    p.run();
-    if (p.isDead()) {
-      this.particles.splice(i, 1);
-    }
-  }
-};
+/* TO DO:
+- better syncing of videos after many pauses
+- different heart sizes
+- gradual colors */

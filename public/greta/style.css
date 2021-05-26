@@ -1,0 +1,229 @@
+@font-face {
+    font-family: mint;
+    src: url(../assets/MintGroteskV1.0-Medium.woff2);
+}
+
+:root {
+    --pink: #d879fb;
+    --purple: #9179fb;
+    --blue: #4274e0;
+}
+
+
+body {
+    margin: 0;
+    font-family: mint, Arial, Helvetica, sans-serif;
+    background: #000;
+    color: #fff;
+}
+
+#canvas-holder canvas{
+    position: fixed;
+    top: 0;
+    z-index: 3;
+}
+
+video, img {
+    filter: grayscale();
+    z-index: 5;
+}
+
+/* start modal */
+
+#start {
+    background-color: var(--blue);
+    color: #fff;
+    height: 70%;
+    width: 50%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 8px;
+    text-align: center;
+    z-index: 5;
+}
+
+#start .start-image {
+    margin-top: 5%;
+}
+
+#start .profile-pic {
+    width: 110px;
+}
+
+#start .title {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 3em;
+}
+
+#start .subtitle {
+    margin-bottom: 32px;
+}
+
+.start-button {
+    padding: 16px;
+    color: #000;
+    font-size: 1.3em;
+    background-color: #fff;
+    border-radius: 16px;
+    margin: 20px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+    display:none;
+}
+
+.loading {
+    margin-top: 80px;
+    font-size: 1.3em;
+}
+
+.loading:after {
+    content: ' .';
+    animation: dots 1s steps(5, end) infinite;}
+  
+  @keyframes dots {
+    0%, 20% {
+      color: rgba(0,0,0,0);
+      text-shadow:
+        .25em 0 0 rgba(0,0,0,0),
+        .5em 0 0 rgba(0,0,0,0);}
+    40% {
+      color: white;
+      text-shadow:
+        .25em 0 0 rgba(0,0,0,0),
+        .5em 0 0 rgba(0,0,0,0);}
+    60% {
+      text-shadow:
+        .25em 0 0 white,
+        .5em 0 0 rgba(0,0,0,0);}
+    80%, 100% {
+      text-shadow:
+        .25em 0 0 white,
+        .5em 0 0 white;}}
+  
+
+/* header */
+
+.header {
+    height: 40px;
+    background-color: var(--blue);
+    color: white;
+    padding: 16px;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 10;
+    display: none;
+}
+
+.logo {
+    font-size: 1.6em;
+}
+
+.profile {
+    margin-top: -4px;
+    margin-right: 80px;
+}
+
+.profile-name {
+    margin-top: -16px;
+    font-size: 1.6em;
+}
+
+.profile-pic {
+    width: 50px;
+    border-radius: 50%;
+    margin-right: 16px;
+    vertical-align: middle;
+}
+
+.love {
+    background-color: var(--pink);
+}
+
+a, a:link, a:hover, a:visited {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* container  */
+
+.container {
+    padding-top: 64px;
+    justify-content: space-between;
+    display: none;
+}
+
+#controls {
+    position: fixed;
+    width: 360px;
+    padding-top: 16px;
+    z-index: 10;
+}
+
+.action {
+    font-size: 1.6em;
+    margin: 24px 16px;
+}
+
+.action:hover {
+    cursor: pointer;
+}
+
+#ads {
+    position: fixed;
+    right: 0;
+    width: 25%;
+    padding-top: 16px;
+    z-index: 10;
+}
+
+#posts {
+    padding: 16px;
+    margin-top: 24px;
+    margin-left: 360px;
+}
+
+.post {
+    border-radius: 8px;
+    border: 1px solid #fff;
+    margin-bottom: 24px;
+    max-width: 570px;
+}
+
+.text {
+    margin-top: 16px;
+    margin-left: 80px;
+    margin-right: 40px;
+}
+
+.user-wrapper {
+    padding: 16px;
+}
+
+.user-name {
+    font-size: 1.6em;
+}
+
+.post .video {
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+.post .video video {
+    width: 100%;
+    max-width: 570px;
+    object-fit: cover;
+   
+}
+
+#heart {
+    display: none;
+}
