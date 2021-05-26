@@ -1,0 +1,79 @@
+@font-face {
+    font-family: mint;
+    src: url(/assets/MintGroteskV1.0-Medium.woff2);
+}
+
+:root {
+    --gretaBlue: #1e90ff;
+  }
+
+
+body {
+    background-image: url("assets/greta_teaser.jpg");
+    height: 100vh;     
+	background-repeat: no-repeat;
+	background-size: cover;
+    color: white;
+    background-color: black;
+    font-family: mint, Arial, Helvetica, sans-serif;
+    color: var(--gretaBlue);
+}
+
+.title {
+    font-size: 2em;
+    margin-top: 30%;
+    margin-left: 5%;
+}
+
+.container {
+    margin-left: 5%;
+    margin-top: 50px;
+}
+
+.mailchimp {
+    margin-left: 5%;
+    margin-top: 50px;
+}
+
+.email {
+    border: 1px solid var(--gretaBlue);
+    background-color: transparent;
+    font-family: mint, Arial, Helvetica, sans-serif;
+    text-align: center;
+    color: var(--gretaBlue);
+    height: 30px;
+    width: 254px;
+}
+
+::placeholder {
+    color:  var(--gretaBlue);
+    opacity: 1;
+ }
+
+ input[type=submit], input[type=button] {
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+}
+
+input:focus{
+    outline: none;
+}
+
+.button {
+    font-family: mint, Arial, Helvetica, sans-serif;
+    margin-top: 10px;
+    color: #fff;
+    background-color: var(--gretaBlue);
+    border: 1px solid var(--gretaBlue);
+    height: 40px;
+    opacity: 0.5;
+    font-size: 1em;
+    width: 260px;
+}
+
+@media only screen and (max-width: 600px) {
+    .title {
+        margin-top: 80%;
+    }
+}

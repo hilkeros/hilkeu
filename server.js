@@ -20,6 +20,21 @@ const { v4: uuidV4 } = require('uuid')
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 
+app.get('/', (req, res) => {
+    res.render('home')
+})
+
+app.get('/press', (req, res) => {
+    res.render('press')
+})
+
+app.get('/team', (req, res) => {
+    res.render('team')
+})
+
+app.get('/greta', (req, res) => {
+    res.render('greta', { peerConfig: peerConfig })
+})
 
 app.get('/hi', (req, res) => {
     res.redirect(`/hi/${uuidV4()}`)
@@ -27,10 +42,6 @@ app.get('/hi', (req, res) => {
 
 app.get('/hi/:room', (req, res) => {
     res.render('room', { roomId: req.params.room, peerConfig: peerConfig })
-})
-
-app.get('/greta', (req, res) => {
-    res.render('greta', { peerConfig: peerConfig })
 })
 
 io.on('connection', socket => {
