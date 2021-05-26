@@ -19,7 +19,6 @@ let texts = [
 
 let canvas;
 
-// let videoUrl = 'https://dl.dropboxusercontent.com/s/jfhdqicpv0a9ig1/hilke2.mov';
 let videoUrl = 'https://dl.dropboxusercontent.com/s/rf2mywto62mkb4s/hilke-trimmed.mov';
 let videoUrl2 = 'https://dl.dropboxusercontent.com/s/oe2qqi3qf0iarqa/aline.mov?dl=0'
 let videos = [];
@@ -33,51 +32,55 @@ let system;
 //socket stuff
 const ROOM_ID = 'greta'
 const socket = io('/')
-const myVideo = document.createElement('video')
-myVideo.muted = true
-const videoGrid = document.getElementById('video-grid')
+let myPeer;
 const peers = {}
 let numberOfConnections = 0;
-const myPeer = new Peer(undefined, {
- PEER_CONFIG
-})
-let streams = [];
 
-navigator.mediaDevices.getUserMedia({
-  video: true,
-  audio: false
-}).then(stream => {
+function turnOnVideo() {
+  myPeer = new Peer(undefined, {
+    PEER_CONFIG
+  })
+
+  navigator.mediaDevices.getUserMedia({
+    video: true,
+    audio: false
+  }).then(setUpStream)
+
+  myPeer.on('open', id => {
+    socket.emit('join-room', ROOM_ID, id)
+    console.log('opening socket')
+  })
+}
+
+function setUpStream(stream) {
   console.log('opened camera')
-  addVideoStream(myVideo, stream)
+  const myVideo = document.createElement('video')
+  myVideo.muted = true
+  addMyVideoStream(myVideo, stream)
 
   myPeer.on('call', call => {
     console.log('call start')
     call.answer(stream)
-    const video = document.createElement('video')
     call.on('stream', userVideoStream => {
-      // addVideoStreamToPost(video, userVideoStream);
-      streams.push(userVideoStream)
+      addVideoStreamToPost(userVideoStream);
     })
   })
 
   socket.on('user-connected', userId => {
     connectToNewUser(userId, stream)
   })
-})
+};
+
+
 
 socket.on('user-disconnected', userId => {
   if (peers[userId]) peers[userId].close()
 })
 
-myPeer.on('open', id => {
-  socket.emit('join-room', ROOM_ID, id)
-  console.log('opening socket')
-})
 
 function connectToNewUser(userId, stream) {
   const call = myPeer.call(userId, stream)
   call.on('stream', userVideoStream => {
-    // addVideoStream(video, userVideoStream)
     console.log('adding new user stream')
     addVideoStreamToPost(userVideoStream)
   })
@@ -94,19 +97,19 @@ function addVideoStreamToPost(stream) {
   video.addEventListener('loadedmetadata', () => {
     video.play()
   })
-  const container = document.getElementsByClassName('video')[numberOfConnections * 2 + 1]
+  const container = document.getElementsByClassName('video')[numberOfConnections * 3 + 1]
   container.replaceChild(video, container.firstElementChild)
   numberOfConnections++
 }
 
-function addVideoStream(video, stream) {
+function addMyVideoStream(video, stream) {
   video.srcObject = stream
   video.addEventListener('loadedmetadata', () => {
     video.play()
   })
-  videoGrid.append(video)
+  const container = document.getElementsByClassName('video')[0]
+  container.replaceChild(video, container.firstElementChild)
 }
-///
 
 function preload() {
   song = loadSound(songUrl)
@@ -115,7 +118,6 @@ function preload() {
 }
 
 function setup() {
-  console.log('starting setup')
   canvas = createCanvas(windowWidth * 0.7, windowHeight);
   canvas.parent('canvas-holder');
   // background('rgba(0, 0, 0, 0.5)');
@@ -126,7 +128,7 @@ function setup() {
 
   musicButton = createButton('Play music').parent('controls').mousePressed(toggleSong);
   createButton('Love').parent('controls').mousePressed(toggleLove);
-  // createButton('Start camera').parent('controls').mousePressed(turnOnVideo);
+  createButton('Start camera').parent('controls').mousePressed(turnOnVideo);
 
   system = new ParticleSystem(createVector(width / 2, 100));
 
@@ -182,7 +184,6 @@ function toggleLove() {
 }
 
 function createPost(text, index) {
-  console.log('number of streams: ', streams.length)
   const even = index % 2 === 0;
   const userName = even ? 'Hilke' : 'Gregory';
   const profilePic = even ? './images/hilke.png' : './images/gregory.png';
@@ -195,21 +196,10 @@ function createPost(text, index) {
   createDiv(text).parent(postWrapper).class('text');
   let videoWrapper = createDiv().parent(postWrapper).class('video');
 
-  if (!even && streams.length > 0) {
-    const video = document.createElement('video')
-    video.srcObject = streams[0]
-    video.addEventListener('loadedmetadata', () => {
-      video.play()
-    })
-    videoWrapper.child(video)
-    streams.shift()
-  } else {
-    let myVideo = createVideo(url);
-    myVideo.parent(videoWrapper);
-    myVideo.volume(0);
-    videos.push(myVideo);
-  }
-
+  let myVideo = createVideo(url);
+  myVideo.parent(videoWrapper);
+  myVideo.volume(0);
+  videos.push(myVideo);
 
   return postWrapper;
 }
