@@ -4,6 +4,8 @@ let myPeer
 const peers = {}
 let numberOfConnections = 0
 
+const withTalk = window.location.search === '?talk'
+
 function turnOnVideo() {
   myPeer = new Peer(undefined, {
     PEER_CONFIG
@@ -11,7 +13,7 @@ function turnOnVideo() {
 
   navigator.mediaDevices.getUserMedia({
     video: true,
-    audio: false
+    audio: withTalk
   }).then(setUpStream)
 
   myPeer.on('open', id => {
