@@ -146,6 +146,24 @@ video, img {
 
 .love {
     background-color: var(--pink);
+    animation-name: spreadlove;
+    animation-duration: 2s;
+}
+
+@keyframes spreadlove {
+    from { background-color: var(--blue) }
+    to { background-color: var(--pink) }
+}
+
+.hate {
+    background-color: var(--blue);
+    animation-name: spreadhate;
+    animation-duration: 2s;
+}
+
+@keyframes spreadhate {
+    from { background-color: var(--pink) }
+    to { background-color: var(--blue) }
 }
 
 a, a:link, a:hover, a:visited {

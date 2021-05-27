@@ -74,7 +74,7 @@ function setup() {
   song.addCue(99.2, hideHearts)
   song.addCue(104.5, toggleStrobo)
   song.addCue(125.2, toggleStrobo)
-  song.addCue(187, showHearts)
+  song.addCue(186.5, showHearts)
   song.addCue(192.2, hideHearts)
   song.addCue(198.2, showHearts)
   song.addCue(203.8, hideHearts)
@@ -145,13 +145,20 @@ function showHearts() {
   }
 
   logo.html('lovebook')
+  header.removeClass('hate')
   header.addClass('love')
   setTimeout(hideHearts, 4000)
 }
 
 function hideHearts() {
-  logo.html('hatebook')
+  // logo.html('hatebook')
   header.removeClass('love')
+  header.addClass('hate')
+  setTimeout(() => setLogo('hatebook'), 2000)
+}
+
+function setLogo(text) {
+  logo.html(text)
 }
 
 function toggleBackground() {
