@@ -100,6 +100,8 @@ function draw() {
     clear()
   }
 
+  select('#streams-count').html(numberOfConnections + 1)
+
   Engine.update(engine, 1000 / 70)
 
   hearts.map((heart, index) => {
@@ -197,9 +199,11 @@ function createPost(text, index) {
   createDiv(text).parent(postWrapper).class('text')
 
   let videoWrapper = createDiv().parent(postWrapper).class('video')
+  videoWrapper.attribute('data-even', even)
   let myVideo = createVideo(url)
   myVideo.parent(videoWrapper)
-  myVideo.volume(0)
+  myVideo.elt.muted = true
+  myVideo.elt.playsInline = true
   videos.push(myVideo)
 
   return postWrapper

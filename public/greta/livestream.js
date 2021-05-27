@@ -18,12 +18,10 @@ function turnOnVideo() {
 
   myPeer.on('open', id => {
     socket.emit('join-room', ROOM_ID, id)
-    console.log('opening socket')
   })
 }
 
 function setUpStream(stream) {
-  console.log('opened camera')
   const myVideo = document.createElement('video')
   myVideo.muted = true
   myVideo.playsinline = true
@@ -32,7 +30,6 @@ function setUpStream(stream) {
   addMyVideoStream(myVideo, stream)
 
   myPeer.on('call', call => {
-    console.log('call start')
     call.answer(stream)
     call.on('stream', userVideoStream => {
       addVideoStreamToPost(userVideoStream);
@@ -52,12 +49,22 @@ socket.on('user-disconnected', userId => {
 
 function connectToNewUser(userId, stream) {
   const call = myPeer.call(userId, stream)
+  let videoContainer
   call.on('stream', userVideoStream => {
-    console.log('adding new user stream')
-    addVideoStreamToPost(userVideoStream)
+    videoContainer = addVideoStreamToPost(userVideoStream)
   })
   call.on('close', () => {
-    video.remove()
+    numberOfConnections--
+    // replace it again with one of the recorded videos
+    const url = videoContainer.dataset.even === 'true' ? videoUrl : videoUrl2
+    const recordedVideo = createVideo(url)
+    recordedVideo.elt.muted = true
+    recordedVideo.elt.playsInline = true
+    videoContainer.replaceChild(recordedVideo.elt, videoContainer.firstElementChild)
+    videos.push(recordedVideo)
+    if (song.isPlaying()) {
+      recordedVideo.play()
+    }
   })
 
   peers[userId] = call
@@ -74,6 +81,7 @@ function addVideoStreamToPost(stream) {
   const container = document.getElementsByClassName('video')[numberOfConnections * 3 + 1]
   container.replaceChild(video, container.firstElementChild)
   numberOfConnections++
+  return container
 }
 
 function addMyVideoStream(video, stream) {
