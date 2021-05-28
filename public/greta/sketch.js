@@ -43,7 +43,7 @@ function setup() {
     isStatic: true
   }
 
-  ground = Bodies.rectangle(width / 2, height - 2, width, 8, options)
+  ground = Bodies.rectangle(width / 2, height, width, 8, options)
   World.add(world, ground)
   path = document.getElementById('heart-path')
   heartVertices = Svg.pathToVertices(path)
@@ -109,10 +109,6 @@ function draw() {
       hearts.splice(index, 1)
     }
   })
-
-  noStroke()
-  fill(255)
-  rect(width / 2, height - 10, width, 16)
 
   if (song.isPlaying()) {
     if (frameCount % 60 === 0) {
@@ -216,7 +212,7 @@ function createPost(text, index) {
 
 
 /* TO DO:
-- adds posts when to many people in call
+- adds posts when too many people in call
 - ground (Firefox)
 - video filter saturation
 - trumpet emoticon
