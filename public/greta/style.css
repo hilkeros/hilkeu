@@ -181,7 +181,7 @@ a, a:link, a:hover, a:visited {
 
 #controls {
     position: fixed;
-    width: 360px;
+    width: 25%;
     padding-top: 16px;
     z-index: 10;
 }
@@ -189,16 +189,32 @@ a, a:link, a:hover, a:visited {
 .action {
     font-size: 1.6em;
     margin: 24px 16px;
+    display: flex;
 }
 
 .action:hover {
     cursor: pointer;
 }
 
+#streams-count
+    {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-size: 0.6em;
+    line-height: 30px;
+    text-align: center;
+    background: var(--blue);
+    margin-left: 16px;
+    margin-top: 3px;
+    margin-bottom: -3px;
+    display: none;
+    }
+
 #ads {
     position: fixed;
     right: 0;
-    width: 25%;
+    width: 20%;
     padding-top: 16px;
     z-index: 10;
 }
@@ -206,7 +222,8 @@ a, a:link, a:hover, a:visited {
 #posts {
     padding: 16px;
     margin-top: 24px;
-    margin-left: 360px;
+    margin-left: 25%;
+    width: 50%;
 }
 
 .post {

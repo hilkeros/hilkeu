@@ -22,6 +22,7 @@ function turnOnVideo() {
 }
 
 function setUpStream(stream) {
+  document.querySelector('#streams-count').style.display = 'block'
   const myVideo = document.createElement('video')
   myVideo.muted = true
   myVideo.playsinline = true

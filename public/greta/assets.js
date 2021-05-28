@@ -1,20 +1,20 @@
 const texts = [
-    `Why lose time on hating her. 
-    She knows that we're losing time`,
-    `Why lose time on blaming her. You know she won't give a damn`,
-    `I think you have bigger sorrows. You'd rather tell me about those`,
-    `Don't you think there is no tomorrow for the bloody things that you chose`,
+    `why lose time on hating her. 
+    she knows that we're losing time`,
+    `why lose time on blaming her. you know she won't give a damn`,
+    `i think you have bigger sorrows. you'd rather tell me about those`,
+    `don't you think there is no tomorrow for the bloody things that you chose`,
     `&#127930;`,
-    `Love me, tell me. I don't think that you are doing fine`,
-    `Hold me, sorry. It's not that easy to cross the line`,
+    `love me, tell me. i don't think that you are doing fine`,
+    `hold me, sorry. it's not that easy to cross the line`,
     `FOR THE PEOPLE LOSING TIME`,
     `&#127930;`,
-    `So brave to make fun of her, if you don't look into her eyes`,
-    `So easy to bring others down, if you can't handle your own lies`,
-    `I think you have bigger troubles, you'd rather tell me about those`,
-    `Let's get rid of those bubbles, enough of that overdose`,
-    `Love me, tell me. I don't think that you are doing fine`,
-    `Hold me, sorry. It's not that easy to cross the line`,
+    `so brave to make fun of her, if you don't look into her eyes`,
+    `so easy to bring others down, if you can't handle your own lies`,
+    `i think you have bigger troubles, you'd rather tell me about those`,
+    `let's get rid of those bubbles, enough of that overdose`,
+    `love me, tell me. I don't think that you are doing fine`,
+    `hold me, sorry. It's not that easy to cross the line`,
     `FOR THE PEOPLE LOSING TIME`,
 ]
 

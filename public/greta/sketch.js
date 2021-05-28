@@ -66,8 +66,6 @@ function setup() {
   logo = select('.logo')
   header = select('.header')
 
-  // song.addCue(2, showHearts)
-  // song.addCue(5, hideHearts)
   song.addCue(83.5, showHearts)
   song.addCue(88.8, hideHearts)
   song.addCue(94, showHearts)
@@ -102,7 +100,7 @@ function draw() {
 
   select('#streams-count').html(numberOfConnections + 1)
 
-  Engine.update(engine, 1000 / 70)
+  Engine.update(engine, 1000 / frameRate())
 
   hearts.map((heart, index) => {
     heart.show()
@@ -140,7 +138,7 @@ function hideStartModalAndStartCamera() {
 }
 
 function showHearts() {
-  for (let i = 0 ; i < 6 ; i++) {
+  for (let i = 0 ; i < 12 ; i++) {
     hearts.push(new Heart(random(width / 2) + width / 4, random(height / 5), 200))
   }
 
@@ -151,7 +149,6 @@ function showHearts() {
 }
 
 function hideHearts() {
-  // logo.html('hatebook')
   header.removeClass('love')
   header.addClass('hate')
   setTimeout(() => setLogo('hatebook'), 2000)
@@ -219,5 +216,14 @@ function createPost(text, index) {
 
 
 /* TO DO:
+- adds posts when to many people in call
+- ground (Firefox)
+- video filter saturation
+- trumpet emoticon
+- share? links to spotify etc.
+- ads
+- better loosing time animation
+- chat
+- mobile version
 - different heart sizes
-- gradual colors */
+ */
