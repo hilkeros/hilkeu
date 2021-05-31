@@ -12,7 +12,7 @@ let logo
 let header
 
 let song
-let musicButton
+let musicButton, mobilePlayButton, mobilePauseButton
 
 let videos = []
 let stroboOn = false
@@ -53,12 +53,20 @@ function setup() {
 
   let loveButton = select('#love')
   loveButton.mousePressed(showHearts)
+  let mobileLoveButton = select('#mobile-love')
+  mobileLoveButton.mousePressed(showHearts)
 
   musicButton = select('#music')
   musicButton.mousePressed(toggleSong)
+  mobilePlayButton = select('#mobile-play')
+  mobilePauseButton = select('#mobile-pause')
+  mobilePlayButton.mousePressed(mobilePlaySong)
+  mobilePauseButton.mousePressed(mobilePauseSong)
 
   let cameraButton = select('#camera')
   cameraButton.mousePressed(turnOnVideo)
+  let mobileCameraButton = select('#mobile-camera')
+  mobileCameraButton.mousePressed(turnOnVideo)
 
   let stroboButton = select('#share')
   stroboButton.mousePressed(toggleStrobo)
@@ -162,6 +170,18 @@ function toggleStrobo() {
   stroboOn = !stroboOn
 }
 
+function mobilePauseSong(){
+  mobilePlayButton.show()
+  mobilePauseButton.hide()
+  toggleSong()
+}
+
+function mobilePlaySong(){
+  mobilePlayButton.hide()
+  mobilePauseButton.show()
+  toggleSong()
+}
+
 function toggleSong() {
   if (song.isPlaying()) {
     song.pause()
@@ -213,10 +233,10 @@ function createPost(text, index) {
 
 /* TO DO:
 - adds posts when too many people in call
-- ground (Firefox)
 - video filter saturation
 - trumpet emoticon
 - share? links to spotify etc.
+- big screens
 - ads
 - better loosing time animation
 - chat
