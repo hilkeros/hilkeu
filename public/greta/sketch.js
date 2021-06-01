@@ -16,13 +16,14 @@ let musicButton, mobilePlayButton, mobilePauseButton
 
 let videos = []
 let stroboOn = false
-let backgroundIsWhite = false
+let backgroundImage
 
 function preload() {
   heartImage = loadImage('images/heart.png')
   purpleHeartImage = loadImage('images/heartpurple.png')
   blueHeartImage = loadImage('images/heartblue.png')
-  
+  backgroundImage = loadImage('images/background.png')
+
   song = loadSound(songUrl)
 }
 
@@ -43,8 +44,9 @@ function setup() {
     isStatic: true
   }
 
-  ground = Bodies.rectangle(width / 2, height, width, 8, options)
+  ground = Bodies.rectangle(width / 2, height, width, 2, options)
   World.add(world, ground)
+
   path = document.getElementById('heart-path')
   heartVertices = Svg.pathToVertices(path)
   heartVertices = decomp.quickDecomp(heartVertices)
@@ -80,7 +82,7 @@ function setup() {
   song.addCue(99.2, hideHearts)
   song.addCue(104.5, toggleStrobo)
   song.addCue(125.2, toggleStrobo)
-  song.addCue(186.5, showHearts)
+  song.addCue(187.5, showHearts)
   song.addCue(192.2, hideHearts)
   song.addCue(198.2, showHearts)
   song.addCue(203.8, hideHearts)
@@ -92,23 +94,16 @@ function setup() {
 
 function draw() {
   if (stroboOn) {
-
-    if (frameCount % 22 === 0) {
-      toggleBackground()
-    }
-
-    if (backgroundIsWhite) {
-      background('rgba(255, 255, 255, 0.05)')
-    } else {
-      clear()
-    }
+    clear()
+    tint(255, random(150, 255))
+    image(backgroundImage, 0, 0, width, height)
   } else {
     clear()
   }
 
   select('#streams-count').html(numberOfConnections + 1)
 
-  Engine.update(engine, 1000 / frameRate())
+  Engine.update(engine, 1000 / 30)
 
   hearts.map((heart, index) => {
     heart.show()
@@ -123,10 +118,10 @@ function draw() {
       videos.map(sync)
     }
   }
-  
+
 }
 
-windowResized = function() {
+windowResized = function () {
   resizeCanvas(windowWidth, windowHeight)
 }
 
@@ -142,7 +137,7 @@ function hideStartModalAndStartCamera() {
 }
 
 function showHearts() {
-  for (let i = 0 ; i < 12 ; i++) {
+  for (let i = 0; i < 12; i++) {
     hearts.push(new Heart(random(width / 2) + width / 4, random(height / 5), 200))
   }
 
@@ -162,21 +157,17 @@ function setLogo(text) {
   logo.html(text)
 }
 
-function toggleBackground() {
-  backgroundIsWhite = !backgroundIsWhite
-}
-
 function toggleStrobo() {
   stroboOn = !stroboOn
 }
 
-function mobilePauseSong(){
+function mobilePauseSong() {
   mobilePlayButton.show()
   mobilePauseButton.hide()
   toggleSong()
 }
 
-function mobilePlaySong(){
+function mobilePlaySong() {
   mobilePlayButton.hide()
   mobilePauseButton.show()
   toggleSong()
@@ -197,6 +188,8 @@ function toggleSong() {
 
 function songEnded() {
   musicButton.html('play music')
+  mobilePlayButton.show()
+  mobileStopButton.hide()
 }
 
 function sync(video) {
@@ -233,13 +226,8 @@ function createPost(text, index) {
 
 /* TO DO:
 - adds posts when too many people in call
-- video filter saturation
-- trumpet emoticon
 - share? links to spotify etc.
 - big screens
-- ads
-- better loosing time animation
 - chat
-- mobile version
 - different heart sizes
  */
