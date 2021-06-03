@@ -70,8 +70,12 @@ function setup() {
   let mobileCameraButton = select('#mobile-camera')
   mobileCameraButton.mousePressed(turnOnVideo)
 
-  let stroboButton = select('#share')
-  stroboButton.mousePressed(toggleStrobo)
+  let spotifyButton = select('#spotify')
+  spotifyButton.mousePressed(openSpotify)
+
+  function openSpotify() {
+    window.open('http://open.spotify.com/artist/6dcrMnF3byxJ0yJRKm1HPO', '_blank')
+  }
 
   logo = select('.logo')
   header = select('.header')
@@ -86,7 +90,7 @@ function setup() {
   song.addCue(192.2, hideHearts)
   song.addCue(198.2, showHearts)
   song.addCue(203.8, hideHearts)
-  song.addCue(208.5, toggleStrobo)
+  // song.addCue(208.5, toggleStrobo)
   song.addCue(229.5, toggleStrobo)
 
   song.onended(songEnded)
@@ -187,6 +191,7 @@ function toggleSong() {
 }
 
 function songEnded() {
+  stroboOn = false
   musicButton.html('play music')
   mobilePlayButton.show()
   mobileStopButton.hide()

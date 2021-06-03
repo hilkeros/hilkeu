@@ -18,6 +18,6 @@ const texts = [
     `FOR THE PEOPLE LOSING TIME`,
 ]
 
-const videoUrl = 'https://dl.dropboxusercontent.com/s/rf2mywto62mkb4s/hilke-trimmed.mov'
-const videoUrl2 = 'https://dl.dropboxusercontent.com/s/oe2qqi3qf0iarqa/aline.mov?dl=0'
-const songUrl = 'https://dl.dropboxusercontent.com/s/zkhoe2ujn2h0uxa/greta.mp3'
+const videoUrl = 'https://dl.dropboxusercontent.com/s/8cz2nax56d0agr5/hilke.mp4#t=0.001'
+const videoUrl2 = 'https://dl.dropboxusercontent.com/s/lo94c8vvyq4v58a/gregory.mp4#t=0.001'
+const songUrl = 'https://dl.dropboxusercontent.com/s/9p3li1yao5lyect/Hilke%20ft.%20Gregory%20Frateur%20-%20Greta.mp3'

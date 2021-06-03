@@ -226,7 +226,6 @@ a, a:link, a:hover, a:visited {
 
 #ads p {
     padding-top: 16px;
-    /* max-width: 200px; */
 }
 
 #posts {
@@ -254,6 +253,7 @@ a, a:link, a:hover, a:visited {
 
 .user-name {
     font-size: 1.6em;
+    z-index: 5;
 }
 
 .post .video {
@@ -264,6 +264,7 @@ a, a:link, a:hover, a:visited {
 .post .video video {
     width: 100%;
     max-width: 570px;
+    max-height: 396px;
     object-fit: cover;
    
 }
