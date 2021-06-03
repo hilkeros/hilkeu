@@ -225,7 +225,6 @@ function createPost(text, index) {
 
 
 /* TO DO:
-- adds posts when too many people in call
 - share? links to spotify etc.
 - big screens
 - chat

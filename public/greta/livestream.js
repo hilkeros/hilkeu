@@ -3,6 +3,7 @@ const socket = io('/')
 let myPeer
 const peers = {}
 let numberOfConnections = 0
+let availableSpots = 5
 
 const withTalk = window.location.search === '?talk'
 
@@ -56,6 +57,7 @@ function connectToNewUser(userId, stream) {
   })
   call.on('close', () => {
     numberOfConnections--
+    availableSpots++
     // replace it again with one of the recorded videos
     const url = videoContainer.dataset.even === 'true' ? videoUrl : videoUrl2
     const recordedVideo = createVideo(url)
@@ -82,6 +84,11 @@ function addVideoStreamToPost(stream) {
   const container = document.getElementsByClassName('video')[numberOfConnections * 3 + 1]
   container.replaceChild(video, container.firstElementChild)
   numberOfConnections++
+  availableSpots--
+  if (availableSpots < 1){
+    texts.map(createPost)
+    availableSpots = 5
+  }
   return container
 }
 
