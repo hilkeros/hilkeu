@@ -7,59 +7,60 @@ const nickForm = document.querySelector(".nick-form")
 let userName = ""
 
 const addNewMessage = ({ user, message }) => {
-    const time = new Date()
-    const formattedTime = time.toLocaleString("en-GB", { hour: "numeric", minute: "numeric" })
+  const time = new Date()
+  const formattedTime = time.toLocaleString("en-GB", { hour: "numeric", minute: "numeric" })
 
-    const receivedMsg = `
-  <div class="incoming__message">
-    <div class="received__message">
-      <p>${message}</p>
-      <div class="message__info">
-        <span class="message__author">${user}</span>
-        <span class="time_date">${formattedTime}</span>
+  const receivedMsg = `
+  <div class="incoming-message">
+    <div class="received-message">
+      <div class="message-box">${message}</div>
+      <div class="message-info">
+        <span class="message-author">${user}</span>
+        <span class="time-date">${formattedTime}</span>
       </div>
     </div>
   </div>`
 
-    const myMsg = `
-  <div class="outgoing__message">
-    <div class="sent__message">
-      <p>${message}</p>
-      <div class="message__info">
-        <span class="time_date">${formattedTime}</span>
+  const myMsg = `
+  <div class="outgoing-message">
+    <div class="sent-message">
+      <div class="message-box">${message}</div>
+      <div class="message-info">
+        <span class="message-author">${userName}</span>  
+        <span class="time-date">${formattedTime}</span>
       </div>
     </div>
   </div>`
 
-    messageBox.innerHTML += user === userName ? myMsg : receivedMsg
+  messageBox.innerHTML += user === userName ? myMsg : receivedMsg
 }
 
 nickForm.addEventListener("submit", (e) => {
-    e.preventDefault()
-    if (!nickInputField.value) {
-        return
-    }
-    userName = nickInputField.value
-    nickForm.style.display = 'none'
-    messageForm.style.display = 'block'
-    inputField.focus()
+  e.preventDefault()
+  if (!nickInputField.value) {
+    return
+  }
+  userName = nickInputField.value
+  nickForm.style.display = 'none'
+  messageForm.style.display = 'block'
+  inputField.focus()
 })
 
 messageForm.addEventListener("submit", (e) => {
-    e.preventDefault()
-    if (!inputField.value) {
-        return
-    }
+  e.preventDefault()
+  if (!inputField.value) {
+    return
+  }
 
-    socket.emit("chat message", {
-        message: inputField.value,
-        nick: userName
-    })
+  socket.emit("chat message", {
+    message: inputField.value,
+    nick: userName
+  })
 
-    inputField.value = ""
+  inputField.value = ""
 })
 
 
 socket.on("chat message", function (data) {
-    addNewMessage({ user: data.nick, message: data.message });
+  addNewMessage({ user: data.nick, message: data.message });
 })

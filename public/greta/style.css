@@ -269,6 +269,90 @@ a, a:link, a:hover, a:visited {
    
 }
 
+#chat {
+    position: fixed;
+    bottom: 0;
+    right: 32px;
+    z-index: 10;
+    height: 360px;
+    width: 300px;
+    padding: 8px;
+    background: #000;
+    border: 1px solid #fff;
+    border-bottom: 0;
+    border-radius: 8px;
+    padding: 16px;
+}
+
+#chat form {
+    position: absolute;
+    bottom: 8px
+}
+
+#chat input {
+    border: 1px solid #fff;
+    background-color: transparent;
+    color: #fff;
+    height: 24px;
+    width: 70%;
+    border-radius: 8px;
+    font-size: 1em;
+    padding: 8px;
+}
+
+::placeholder {
+    color:  #fff;
+    opacity: 1;
+ }
+
+ input[type=submit], input[type=button] {
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+    border-radius: 8px;
+}
+
+input:focus {
+    outline: none;
+}
+
+.message-box {
+    border: 1px solid #fff;
+    border-radius: 8px;
+    padding: 8px;
+}
+
+.outgoing-message, .incoming-message {
+    display: flex;
+    margin-bottom: 16px;
+}
+
+.incoming-message {
+    justify-content: flex-start;
+}
+
+.outgoing-message {
+    justify-content: flex-end;
+}
+
+.message-info {
+    font-size: 0.5em;
+    margin-top: 4px;
+}
+
+.outgoing-message .message-box {
+    background-color: #fff;
+    color: #000;
+    text-align: right;
+}
+
+.outgoing-message .message-info {
+    text-align: right;
+}
+
+.message-form {
+    display: none;
+}
+
 #heart {
     display: none;
 }
