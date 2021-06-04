@@ -30,6 +30,16 @@ body {
     margin-top: 50px;
 }
 
+.links {
+    font-size: 0.8em;
+    padding-top: 16px;
+}
+
+a, a:link, a:hover, a:visited {
+    color: #fff;
+    text-decoration: none;
+}
+
 .mailchimp {
     margin-left: 5%;
     margin-top: 50px;
