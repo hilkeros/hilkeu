@@ -33,6 +33,7 @@ const addNewMessage = ({ user, message }) => {
   </div>`
 
   messageBox.innerHTML += user === userName ? myMsg : receivedMsg
+  messageBox.scrollTop = messageBox.scrollHeight
 }
 
 nickForm.addEventListener("submit", (e) => {
@@ -61,6 +62,7 @@ messageForm.addEventListener("submit", (e) => {
 })
 
 
-socket.on("chat message", function (data) {
-  addNewMessage({ user: data.nick, message: data.message });
+socket.on("chat message", function (messages) {
+  messageBox.innerHTML = ""
+  messages.map( message => addNewMessage({ user: message.nick, message: message.message }))
 })

@@ -20,6 +20,10 @@ function turnOnVideo() {
   myPeer.on('open', id => {
     socket.emit('join-room', ROOM_ID, id)
   })
+  if (( window.innerWidth > 800 ) && ( window.innerHeight > 600 )) {
+    document.querySelector('#chat').style.display = 'block'
+  }
+  
 }
 
 function setUpStream(stream) {

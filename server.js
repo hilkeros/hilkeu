@@ -44,11 +44,14 @@ app.get('/hi/:room', (req, res) => {
     res.render('room', { roomId: req.params.room, peerConfig: peerConfig })
 })
 
+let messages = [];
+
 io.on('connection', socket => {
     socket.on('join-room', (roomId, userId) => {
         console.log('someone joined', roomId, userId)
         socket.join(roomId)
         socket.to(roomId).broadcast.emit('user-connected', userId)
+        io.emit("chat message", messages);
 
         socket.on('disconnect', () => {
             socket.to(roomId).broadcast.emit('user-disconnected', userId)
@@ -56,7 +59,11 @@ io.on('connection', socket => {
 
         socket.on("chat message", function (data) {
             console.log(data)
-            io.emit("chat message", data)
+            messages.push(data)
+            if (messages.length > 100) {
+                messages.shift()
+            }
+            io.emit("chat message", messages)
         });
     })
 })
