@@ -6,10 +6,7 @@ const nickForm = document.querySelector(".nick-form")
 
 let userName = ""
 
-const addNewMessage = ({ user, message }) => {
-  const time = new Date()
-  const formattedTime = time.toLocaleString("en-GB", { hour: "numeric", minute: "numeric" })
-
+const addNewMessage = ({ user, message, formattedTime }) => {
   const receivedMsg = `
   <div class="incoming-message">
     <div class="received-message">
@@ -53,9 +50,13 @@ messageForm.addEventListener("submit", (e) => {
     return
   }
 
+  const time = new Date()
+  const formattedTime = time.toLocaleString("en-GB", { hour: "numeric", minute: "numeric" })
+
   socket.emit("chat message", {
     message: inputField.value,
-    nick: userName
+    nick: userName,
+    formattedTime: formattedTime
   })
 
   inputField.value = ""
@@ -64,5 +65,5 @@ messageForm.addEventListener("submit", (e) => {
 
 socket.on("chat message", function (messages) {
   messageBox.innerHTML = ""
-  messages.map( message => addNewMessage({ user: message.nick, message: message.message }))
+  messages.map( message => addNewMessage({ user: message.nick, message: message.message, formattedTime: message.formattedTime }))
 })
