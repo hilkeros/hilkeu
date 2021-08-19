@@ -32,8 +32,8 @@ function setup() {
   withCameraButton.show()
   const withoutCameraButton = select('#start-without-camera')
   withoutCameraButton.show()
-  withCameraButton.mousePressed(hideStartModalAndStartCamera)
-  withoutCameraButton.mousePressed(hideStartModal)
+  withCameraButton.mouseClicked(hideStartModalAndStartCamera)
+  withoutCameraButton.mouseClicked(hideStartModal)
 
   canvas = createCanvas(windowWidth, windowHeight)
   canvas.parent('canvas-holder')

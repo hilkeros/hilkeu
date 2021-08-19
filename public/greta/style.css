@@ -28,6 +28,10 @@ video, img {
     z-index: 5;
 }
 
+button {
+    font-family: mint, Arial, Helvetica, sans-serif;
+}
+
 /* start modal */
 
 #start {
@@ -69,6 +73,7 @@ video, img {
     font-size: 1.3em;
     background-color: #fff;
     border-radius: 16px;
+    border: none;
     margin: 20px;
     width: 80%;
     margin-left: auto;
@@ -187,6 +192,11 @@ a, a:link, a:hover, a:visited {
     z-index: 10;
 }
 
+#controls button {
+    background-color: transparent;
+    color: white;
+    border: none;
+}
 #mobile-controls {
     display: none;
 }

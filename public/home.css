@@ -67,7 +67,7 @@ a, a:link, a:hover, a:visited {
 }
 
 input:focus{
-    outline: none;
+    /* outline: none; */
 }
 
 .button {
