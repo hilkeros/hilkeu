@@ -6,18 +6,19 @@
 :root {
     --gretaBlue: #1e90ff;
     --paradoxesOrange: #fd8e74;
+    --silentGreen: rgb(64,149,93);
   }
 
 
 body {
-    background-image: url("assets/greta_teaser.jpg");
-    height: 100vh;     
+    background-image: url("assets/Hilke_SilentViolent.jpg");
+    height: 100vh;
 	background-repeat: no-repeat;
 	background-size: cover;
     color: white;
     background-color: black;
     font-family: mint, Arial, Helvetica, sans-serif;
-    color: var(--gretaBlue);
+    color: var(--silentGreen);
 }
 
 .title {
@@ -47,17 +48,17 @@ a, a:link, a:hover, a:visited {
 }
 
 .email {
-    border: 1px solid var(--gretaBlue);
+    border: 1px solid white;
     background-color: transparent;
     font-family: mint, Arial, Helvetica, sans-serif;
     text-align: center;
-    color: var(--gretaBlue);
+    color: white;
     height: 30px;
     width: 254px;
 }
 
 ::placeholder {
-    color:  var(--gretaBlue);
+    color:  white;
     opacity: 1;
  }
 
@@ -75,8 +76,8 @@ input:focus{
     font-family: mint, Arial, Helvetica, sans-serif;
     margin-top: 10px;
     color: #fff;
-    background-color: var(--gretaBlue);
-    border: 1px solid var(--gretaBlue);
+    background-color: var(--silentGreen);
+    border: 1px solid var(--silentGreen);
     height: 40px;
     opacity: 0.5;
     font-size: 1em;
