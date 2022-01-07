@@ -1,0 +1,89 @@
+@font-face {
+    font-family: mint;
+    src: url(/assets/MintGroteskV1.0-Medium.woff2);
+}
+
+:root {
+    --gretaBlue: #1e90ff;
+    --paradoxesOrange: #fd8e74;
+    --silentGreen: rgb(64,149,93);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: mint, Arial, Helvetica, sans-serif;
+    width: 100%;
+    margin: 0;
+}
+
+a, a:link, a:hover, a:visited {
+    color: #fff;
+    text-decoration: none;
+}
+
+.header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.header a {
+    text-decoration: none;
+}
+
+.header .title {
+    align-self: flex-start;
+    font-size: 2em;
+    margin-left: 40px;
+    margin-top: 20px;
+}
+
+.socials ul {
+    margin-top: 16px;
+    list-style: none;
+}
+
+.socials li {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin: 8px;
+    background-color: var(--silentGreen);
+    border-radius: 100%;
+}
+
+.socials img {
+    width: 30px;
+}
+
+.header .menu {
+    align-self: flex-end;
+    margin-right: 40px;
+}
+
+.header .menu ul {
+    list-style-type: none;
+    text-align: right;
+    font-size: 1.2em;
+    margin-top: 20px;
+}
+
+/* mobile version */
+
+@media only screen and (max-width: 768px) {
+    .socials {
+        position: fixed;
+        bottom: 10px;
+        width: 100%;
+    }
+
+    .list-wrapper {
+        display: flex;
+        justify-content: center;
+    }
+}

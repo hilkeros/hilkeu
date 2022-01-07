@@ -17,11 +17,17 @@ const server = require('http').Server(app)
 const io = require('socket.io')(server)
 const { v4: uuidV4 } = require('uuid')
 
+const { pressClips } = require('./data/media')
+
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 
 app.get('/', (req, res) => {
     res.render('home')
+})
+
+app.get('/about', (req, res) => {
+    res.render('about', { pressClips: pressClips })
 })
 
 app.get('/press', (req, res) => {

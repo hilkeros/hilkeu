@@ -1,45 +1,20 @@
-@font-face {
-    font-family: mint;
-    src: url(/assets/MintGroteskV1.0-Medium.woff2);
-}
-
-:root {
-    --gretaBlue: #1e90ff;
-    --paradoxesOrange: #fd8e74;
-    --silentGreen: rgb(64,149,93);
-  }
-
-
 body {
-    background-image: url("assets/Hilke_SilentViolent.jpg");
+    background-image: url("../assets/Hilke_SilentViolent.jpg");
     height: 100vh;
 	background-repeat: no-repeat;
 	background-size: cover;
-    color: white;
     background-color: black;
-    font-family: mint, Arial, Helvetica, sans-serif;
     color: var(--silentGreen);
-}
-
-.title {
-    font-size: 2em;
-    margin-top: 20%;
-    margin-left: 5%;
 }
 
 .container {
     margin-left: 5%;
-    margin-top: 50px;
+    margin-top: 15%;
 }
 
 .links {
     font-size: 0.8em;
     padding-top: 16px;
-}
-
-a, a:link, a:hover, a:visited {
-    color: #fff;
-    text-decoration: none;
 }
 
 .mailchimp {

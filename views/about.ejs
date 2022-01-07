@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="/css/general.css">
+    <link rel="stylesheet" type="text/css" href="/css/about.css">
+
+    <title>about hilke</title>
+</head>
+
+<body>
+    <%- include('header'); -%>
+    <div class="container">
+        <h1>bio</h1>
+        <div id="bio">
+            <p>
+                Finally it is there: Hilke’s album Silent Violent, a ’coming of gender’ story about - among other things -
+                finding your own voice, hiding your feelings, and failed masculinity.
+            </p>
+            <p>
+    
+                Hilke is a former member of the Belgian dream pop outfit Amatorski and released some electronic tracks under
+                the moniker Hroski. Now she shows herself in all honesty under her own name: Hilke.
+            </p>
+            <p>
+                During the creation process, Hilke was searching for her own voice, somewhere on the spectrum between male
+                and female. After she started her solo project, it became clear again that singing is an important factor in
+                the emotional power of music. Therefore she wanted to make songs, where voices take a significant role in
+                the music. She started to look for her own way of singing, a way that also would feel in harmony with her
+                gender identity. She asked a couple of singers who she admires, to listen to her demos and to interpret the
+                songs in their own way. Those collaborations inspired her, as a writer and a producer, but also as a singer.
+            </p>
+            <p>
+                Hilke sees her personal journey more as a kind of metaphor for a process that we, as a society, could or
+                should go through. Questioning her own gender identity, questioning gender as a social construct, made her
+                more aware about the importance of empathy and compassion, the ability to talk about emotions, show
+                vulnerability, and about the failing fundamentals of (cis)male identity and patriarchy. "I believe that, as
+                a society, we could benefit from a more 'feminine' or 'gender fluid' or diverse approach,”, she says, "where
+                there is more balance between empathy, kindness, respect, vulnerability and strength."
+            </p>
+            <p>
+                The album contains vocal features by Gregory Frateur (Dez Mona), Frank Powers (Dino Brandão) and Daniela
+                Weinmann (Odd Beholder), but Hilke sings also herself on a couple of tracks. The songs are sometimes
+                danceable, often slow, both deranging and soothing, fragile, but confident, like you would be dancing on
+                ice.
+            </p>
+            <p>
+                Pumping basses and banging electronic beats are combined with angelic vocals and melancholic atmospheres,
+                dystopian vocal chops and chilling and breath-taking build-ups. 'Silent Violent' has become a disturbing
+                journey wandering between the dance floor, consoling goosebump moments and socially critical contemplation.
+            </p>
+            </p>
+        </div>
+        <h1>press</h1>
+        <div id="press">
+            <% pressClips.forEach(function(clip) { %>
+                <div class="press-clip">
+                    <a href="<%= clip.imgUrl %>" target="_blank">
+                        <img src="<%= clip.imgUrl %>">
+                    </a>
+                    <div class="press-links">
+                        <span>
+                            <%= clip.name %>
+                        </span>
+                        <span><a href="<%= clip.pdfUrl || clip.link %>" target="_blank">link</a></span>
+                    </div>
+                </div>
+                <% }); %>
+        </div>
+    </div>
+
+</body>
+
+</html>
