@@ -1,0 +1,36 @@
+body {
+    background-image: url("../assets/beton.jpg");
+	background-repeat: repeat;
+	background-size: cover;
+    background-color: black;
+    text-align: center;
+    color: white;
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 64px;
+    margin-bottom: 64px;
+    width: 80%;
+    max-width: 960px;
+}
+
+#picture-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.picture {
+   margin-top: 32px;
+}
+
+.picture img {
+    width: 90%
+}
+
+@media(max-width: 768px) {
+    #picture-container {
+      grid-template-columns: 1fr;
+    }
+}

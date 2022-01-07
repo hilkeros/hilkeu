@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="/css/general.css">
+    <link rel="stylesheet" type="text/css" href="/css/shows.css">
+
+    <title>shows</title>
+</head>
+
+<body>
+    <%- include('header'); -%>
+        <div class="container">
+            <div>Pictures by <a href="https://quicksand.ch/" target="_blank">Johannes Hofmann</a></div>
+            <div id="picture-container">
+                <% photos.forEach(function(photo) { %>
+                    <div class="picture">
+                        <a href="<%= photo %>" target="_blank">
+                            <img src="<%= photo %>" alt="Hilke playing a live concert">
+                        </a>
+                    </div>
+                    <% }); %>
+            </div>
+
+           
+        </div>

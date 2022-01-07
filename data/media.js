@@ -71,6 +71,15 @@ exports.pressClips = [
     }
 
 ]
-exports.photos = 'hello'
+exports.photos = [
+'https://dl.dropboxusercontent.com/s/w2fdcx8e4dhd0gc/JOH06378_edited_low.jpg', 
+'https://dl.dropboxusercontent.com/s/1pk1z050jrtvmn0/JOH06387_edited_low.jpg',
+'https://dl.dropboxusercontent.com/s/ur6x582y48t0nnk/JOH06383_edited_low.jpg',
+'https://dl.dropboxusercontent.com/s/n79uvj1hvztwy8e/JOH06392_edited_low.jpg',
+'https://dl.dropboxusercontent.com/s/d8sd3qmbmsmukzk/JOH06414_edited_low.jpg',
+'https://dl.dropboxusercontent.com/s/0ggw125cq6thkjp/JOH06407_edited_low.jpg',
+'https://dl.dropboxusercontent.com/s/6i45qhfwpw2djss/JOH06448_edited_low.jpg',
+'https://dl.dropboxusercontent.com/s/zha28l81vfkt3rj/JOH06372_edited_low.jpg'
+]
 
 exports.songkickUrl = 'https://api.songkick.com/api/3.0/artists/10158735/gigography.json'
