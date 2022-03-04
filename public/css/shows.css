@@ -16,6 +16,10 @@ body {
     max-width: 960px;
 }
 
+.songkick {
+    margin-bottom: 32px;
+}
+
 #picture-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);

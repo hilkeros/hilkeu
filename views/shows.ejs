@@ -16,6 +16,11 @@
 <body>
     <%- include('header'); -%>
         <div class="container">
+            <div class="songkick">
+                <a href="https://www.songkick.com/artists/10158735" class="songkick-widget" data-theme="dark" data-detect-style="true" data-font-color="#fff" data-background-color="#40945d" data-locale="en">Shows</a>
+                <script src="//widget.songkick.com/10158735/widget.js"></script>
+            </div>
+           
             <div>Pictures by <a href="https://quicksand.ch/" target="_blank">Johannes Hofmann</a></div>
             <div id="picture-container">
                 <% photos.forEach(function(photo) { %>
