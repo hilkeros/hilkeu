@@ -7,15 +7,6 @@ body {
     color: white;
 }
 
-.container {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 64px;
-    margin-bottom: 64px;
-    width: 80%;
-    max-width: 960px;
-}
-
 .songkick {
     margin-bottom: 32px;
 }

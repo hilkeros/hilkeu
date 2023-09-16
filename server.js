@@ -34,6 +34,10 @@ app.get('/shows', (req, res) => {
     res.render('shows', { photos: photos })
 })
 
+app.get('/contact', (req, res) => {
+    res.render('contact')
+})
+
 app.get('/press', (req, res) => {
     res.render('press')
 })
