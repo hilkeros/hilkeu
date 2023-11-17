@@ -70,7 +70,7 @@ exports.pressClips = [
         link: 'https://www.ronorp.net/zuerich/rons-tipps/zeitvertreib.593/hoeren.147/hilke-zeigt-sich-mit-ihrer-debuetsingle-greta-in-aller.2226926'
     }, {
         name: 'Musical Monitor',
-        imgUrl: 'https://dl.dropboxusercontent.com/s/xsj6leq509qzmdr22jc7w/MusicalMonitor.png',
+        imgUrl: 'https://www.dropbox.com/scl/fi/xsj6leq509qzmdr22jc7w/MusicalMonitor.png?rlkey=ckdhh7u12jhukagjipzc3fmsq&raw=1',
         link: 'https://www.musicalmonitor.com/index.php/approfondimenti/approfondimenti-electronic/1098-hilke-electroandroginia'
     }
 
