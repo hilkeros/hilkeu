@@ -26,6 +26,10 @@ body {
     margin: 0;
 }
 
+p {
+    margin-top: 16px;
+}
+
 a, a:link, a:hover, a:visited {
     color: #fff;
     text-decoration: none;
