@@ -7,11 +7,17 @@
     --gretaBlue: #1e90ff;
     --paradoxesOrange: #fd8e74;
     --silentGreen: rgb(64,149,93);
+    --paradoxesPink: #aa98fe;
+    --feroceYellow: #e9d45e;
 }
 
 * {
     margin: 0;
     padding: 0;
+}
+
+*:focus{
+    outline: 2px solid var(--feroceYellow);
 }
 
 body {
@@ -53,13 +59,15 @@ a, a:link, a:hover, a:visited {
     width: 30px;
     height: 30px;
     margin: 8px;
-    background-color: var(--silentGreen);
+    background-color: var(--paradoxesPink);
     border-radius: 100%;
 }
 
 .socials img {
     width: 30px;
 }
+
+
 
 .header .menu {
     align-self: flex-end;
