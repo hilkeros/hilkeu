@@ -94,6 +94,21 @@ a, a:link, a:hover, a:visited {
     max-width: 960px;
 }
 
+.homeContainer {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 128px;
+}
+
+.youtubeFrame {
+    width: 50%;
+}
+
+.youtubeVideo {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+}
+
 /* mobile version */
 
 @media only screen and (max-width: 768px) {
@@ -106,5 +121,17 @@ a, a:link, a:hover, a:visited {
     .list-wrapper {
         display: flex;
         justify-content: center;
+    }
+
+    .homeContainer {
+        flex-direction: column;
+    }
+
+    .youtubeFrame {
+        margin-top: 32px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 90%;
+      
     }
 }
