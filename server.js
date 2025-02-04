@@ -43,7 +43,7 @@ app.get('/press', (req, res) => {
 })
 
 app.get('/team', (req, res) => {
-    res.render('team')
+    res.redirect('https://hilkeros.github.io/');
 })
 
 app.get('/greta', (req, res) => {
