@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="/css/general.css">
+    <link rel="stylesheet" type="text/css" href="/css/about.css">
+
+    <title>hilke's readings</title>
+</head>
+
+<body>
+    <%- include('header'); -%>
+    <div class="container">
+        <h1>hilke's readings</h1>
+        <p>Here are some books that I read and that inspired my world view.</p>
+        <ul>
+            <% books.forEach(function(book) { %>
+                <li><%= book.author %>: <%= book.title %></li>
+            <% }); %>
+        </ul>
+    </div>
+    <%- include('footer'); -%>
+</body>
+</html>

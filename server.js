@@ -17,18 +17,27 @@ const server = require('http').Server(app)
 const io = require('socket.io')(server)
 const { v4: uuidV4 } = require('uuid')
 
-const { pressClips, photos } = require('./data/media')
+const { pressClips, photos, releases, books } = require('./data/media')
 
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 
 app.get('/', (req, res) => {
-    res.render('home')
+    res.render('home', { releases: releases })
 })
 
 app.get('/about', (req, res) => {
-    res.render('about', { pressClips: pressClips })
+    res.render('about')
 })
+
+app.get('/music', (req, res) => {
+    res.render('music', { releases: releases })
+})
+
+app.get('/music/:slug', (req, res) => {
+    res.render('release-detail', { release: releases.find(r => r.slug === req.params.slug) })
+})
+
 
 app.get('/shows', (req, res) => {
     res.render('shows', { photos: photos })
@@ -39,7 +48,11 @@ app.get('/contact', (req, res) => {
 })
 
 app.get('/press', (req, res) => {
-    res.render('press')
+    res.render('press', { pressClips: pressClips })
+})
+
+app.get('/read', (req, res) => {
+    res.render('read', { books: books })
 })
 
 app.get('/team', (req, res) => {

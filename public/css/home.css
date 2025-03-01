@@ -13,49 +13,9 @@ body {
 }
 
 .links {
-    font-size: 0.8em;
+    font-size: 1.8em;
     padding-top: 16px;
 }
-
-.mailchimp {
-    margin-left: 5%;
-    margin-top: 50px;
-}
-
-.email {
-    border: 1px solid white;
-    background-color: transparent;
-    font-family: mint, Arial, Helvetica, sans-serif;
-    text-align: center;
-    color: white;
-    height: 30px;
-    width: 254px;
-    margin-bottom: 20px;
-}
-
-::placeholder {
-    color:  white;
-    opacity: 1;
- }
-
- input[type=submit], input[type=button] {
-    /* -webkit-appearance: none; */
-    -webkit-border-radius: 0;
-    border-radius: 0;
-}
-
-.button {
-    font-family: mint, Arial, Helvetica, sans-serif;
-    margin-top: 10px;
-    color: #fff;
-    background-color: var(--paradoxesPink);
-    border: 1px solid var(--paradoxesPink);
-    height: 40px;
-    /* opacity: 0.5; */
-    font-size: 1em;
-    width: 260px;
-}
-
 
 .instagramFrame {
     margin-bottom: 64px;

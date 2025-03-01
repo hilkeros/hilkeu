@@ -1,0 +1,21 @@
+<div class="container">
+    <h1 class="page-title">Discography</h1>
+    <div class="releases-list">
+        <% releases.forEach(function(release) { %>
+            <div class="release">
+                <a href="/music/<%= release.slug %>"><div class="cover"></div></a>
+                <div class="info">
+                    <div class="title"><%= release.name %></div>
+                    <div class="date"><%= release.date %></div>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+
+    <h1 class="page-title">Videos</h1>
+    <div class="youtubeFrame">
+        <iframe class="youtubeVideo" src="https://www.youtube.com/embed/fR7hY08GBD8?si=COoDicr1OlceQxj-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe class="youtubeVideo" src="https://www.youtube.com/embed/N2g6On_u2r0?si=2yaXv10c4TTB6G2b" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+</div>
+

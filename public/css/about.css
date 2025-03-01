@@ -10,6 +10,8 @@ h1 {
     margin-top: 64px;
 }
 
+
+
 #bio {
     color: white;
     background-color: rgba(0,0,0,0.6);
@@ -17,6 +19,14 @@ h1 {
     padding: 32px;
     font-size: 0.8em;
     line-height: 2em;
+}
+
+#bio .summary {
+    font-size: 1.2em;
+}
+
+#bio .author {
+    font-size: 0.8em;
 }
 
 #press {
