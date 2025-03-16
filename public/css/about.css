@@ -19,6 +19,14 @@ h1 {
     line-height: 2em;
 }
 
+#bio .summary {
+    font-size: 1.2em;
+}
+
+#bio .author {
+    font-size: 0.8em;
+}
+
 #press {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
