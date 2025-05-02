@@ -1,20 +1,39 @@
-body {
-    /* background-image: url("../assets/beton.jpg"); */
-    height: 100vh;
-	/* background-repeat: repeat;
-	background-size: cover; */
-    background-color: #2e2e2e;
-    color: var(--paradoxesPink);
+.homeContainer {
+    background-image: url("../assets/angry-splash.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: calc(100vh - 170px);
+    padding-left: 5%;
 }
 
-.container {
-    margin-left: 5%;
-    margin-top: 15%;
+.hero {
+    padding-top: 300px;
 }
 
-.links {
-    font-size: 1.8em;
-    padding-top: 16px;
+.hero h1 {
+    font-family: friederike, Arial, Helvetica, sans-serif;
+    color: var(--angryWhite);
+    padding-left: 40px;
+    font-size: 3em;
+}
+
+.mainLink {
+    display: inline-block;
+    background-color: var(--angryBlack);
+    margin-top: 60px;
+    padding: 8px 40px;
+    border-radius: 100px;
+}
+
+.mainLink:hover {
+    background-color: var(--angryOlive);
+}
+
+.mainLink a {
+    color: var(--angryWhite);
+    font-size: 1.2em;
+    text-decoration: none;
 }
 
 .instagramFrame {

@@ -14,24 +14,25 @@
 </head>
 
 <body>
-    <%- include('header'); -%>
+    <%- include('header'); -%> 
+    <h2>press</h1>
     <div class="container">
-
-        <h1>press</h1>
-        <div id="press">
-            <% pressClips.forEach(function(clip) { %>
-                <div class="press-clip">
-                    <a href="<%= clip.imgUrl %>" target="_blank">
-                        <img src="<%= clip.imgUrl %>">
-                    </a>
-                    <div class="press-links">
-                        <span>
-                            <%= clip.name %>
-                        </span>
-                        <span><a href="<%= clip.pdfUrl || clip.link %>" target="_blank">link</a></span>
+        <div class="centered-container">
+            <div id="press">
+                <% pressClips.forEach(function(clip) { %>
+                    <div class="press-clip">
+                        <a href="<%= clip.imgUrl %>" target="_blank">
+                            <img src="<%= clip.imgUrl %>">
+                        </a>
+                        <div class="press-links">
+                            <span>
+                                <%= clip.name %>
+                            </span>
+                            <span><a href="<%= clip.pdfUrl || clip.link %>" target="_blank">link</a></span>
+                        </div>
                     </div>
-                </div>
-                <% }); %>
+                    <% }); %>
+            </div>
         </div>
     </div>
     <%- include('footer'); -%>

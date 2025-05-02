@@ -92,17 +92,23 @@ exports.releases = [
     {
         name: 'Am I Angry Enough?',
         date: '2025',
-        slug: 'am-i-angry-enough'
+        slug: 'am-i-angry-enough',
+        cover: 'amIangryenough.jpg',
+        link: 'https://lnk.site/hilke-am-i-angry-enough'
     },
     {
         name: 'Piano Feroce',
         date: '2024',
-        slug: 'piano-feroce'
+        slug: 'piano-feroce',
+        cover: 'pianoferoce.jpg',
+        link: 'https://lnk.site/hilke-piano-feroce'
     },
     {
         name: 'Silent Violent',
         date: '2021',
-        slug: 'silent-violent'
+        slug: 'silent-violent',
+        cover: 'silentviolent.jpg',
+        link: 'https://lnk.site/hilke-silent-violent'
     },
 ]
 

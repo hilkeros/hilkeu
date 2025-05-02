@@ -1,16 +1,3 @@
-body {
-    background-image: url("../assets/beton.jpg");
-	background-repeat: repeat;
-	background-size: cover;
-    background-color: black;
-    text-align: center;
-    color: white;
-}
-
-.songkick {
-    margin-bottom: 32px;
-}
-
 #picture-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
