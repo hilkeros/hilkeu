@@ -87,3 +87,94 @@ exports.photos = [
 ]
 
 exports.songkickUrl = 'https://api.songkick.com/api/3.0/artists/10158735/gigography.json'
+
+exports.releases = [
+    {
+        name: 'Am I Angry Enough?',
+        date: '2025',
+        slug: 'am-i-angry-enough',
+        cover: 'amIangryenough.jpg',
+        link: 'https://lnk.site/hilke-am-i-angry-enough'
+    },
+    {
+        name: 'Piano Feroce',
+        date: '2024',
+        slug: 'piano-feroce',
+        cover: 'pianoferoce.jpg',
+        link: 'https://lnk.site/hilke-piano-feroce'
+    },
+    {
+        name: 'Silent Violent',
+        date: '2021',
+        slug: 'silent-violent',
+        cover: 'silentviolent.jpg',
+        link: 'https://lnk.site/hilke-silent-violent'
+    },
+]
+
+exports.books = [
+    {
+        author: "CHEMALY, Soraya",
+        title: "Rage becomes her: The power of women's anger"
+    },
+    {
+        author: "VAID-MENON, Alok",
+        title: "Beyond the Gender Binary"
+    },
+    {
+        author: "DE L'HORIZON, Kim",
+        title:  "Blutbuch",
+    },
+    {
+        author: "GINSBURG, Tobias",
+        title: "Die lezten Männer des Westen"
+    },
+    {
+        author: "SCHUTZBACH, Franziska",
+        title: "Die Erschöpfung der Frauen"
+    },
+    {
+        author: "LAVOYER, Agota",
+        title: "Jede_ Frau. Über eine Gesellschaft, die sexualisierte Gewalt verharmlost und normalisiert"
+    },
+    {
+        author: "STOKOWSKI, Margarete",
+        title: "Unterum frei"
+    },
+    {
+        author: "SCHICK, Sibel",
+        title: "Weissen Feminismus canceln"
+    },
+    {
+        author: "EMKE, Carolin",
+        title: "Ja heisst ja und…"
+    },
+    {
+        author: "KURT, Seyda",
+        title: "Radikale Zärtlichkeit",
+    },
+    {
+        author: "HOOKS, bell",
+        title: "All About Love"
+    },
+    {
+        author: "FEDERICI, Silvia",
+        title: "Caliban and the Witch: Women, the Body and Primitive Accumulation"
+    },
+    {
+        author: "COFFIN, Alice",
+        title: "Le génie lesbien"
+    },
+    {
+        author: "DESPENTES, Virginie",
+        title: "King Kong Théorie"
+    },
+    {
+        author: "PRECIADO, Paul B.",
+        title: "Un appartement sur Uranus"
+    },
+    {
+        author: "TUAILLON, Victoire",
+        title: "Les couilles sur la table"
+    },
+]

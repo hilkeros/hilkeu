@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" type="text/css" href="/css/general.css">
+
+    <title>hilke's readings</title>
+</head>
+
+<body>
+    <%- include('header'); -%>
+    <div class="container">
+        <h2>hilke's readings</h2>
+        <div class="centered-container text-block">
+            <p>Here are some books that I read and that inspired my world view.</p>
+            <ul class="mt-40">
+                <% books.forEach(function(book) { %>
+                    <li><%= book.author %>: <%= book.title %></li>
+                <% }); %>
+            </ul>
+        </div>
+    </div>
+    <%- include('footer'); -%>
+</body>
+</html>

@@ -5,8 +5,10 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
     <link rel="stylesheet" type="text/css" href="/css/general.css">
     <link rel="stylesheet" type="text/css" href="/css/contact.css">
 
@@ -16,20 +18,23 @@
 <body>
     <%- include('header'); -%>
     <div class="container">
-        <h1>contact</h1>
-        <div id="contact">
-            <div class="row">
-                <div>Bookings Switzerland</div>
-                <div><a href="mailto:info@kristinahofstetter.com">Kristina Hofstetter</a></div>
-            </div>
-            <div class="row">
-                <div>Bookings Belgium</div>
-                <div><a href="mailto:griet@rumoer.be">Griet De Blende</a></div>
-            </div>
-            <div class="row">
-                <div>Promo and label</div>
-                <div><a href="mailto:hilke@redbrickrecords.ch">Red Brick Records</a></div>
+        <h2>contact</h2>
+        <div class="centered-container text-block">
+            <div id="contact">
+                <div class="row">
+                    <div>Bookings Switzerland</div>
+                    <div><a href="mailto:info@kristinahofstetter.com">Kristina Hofstetter</a></div>
+                </div>
+                <div class="row">
+                    <div>Bookings Belgium</div>
+                    <div><a href="mailto:griet@rumoer.be">Griet De Blende</a></div>
+                </div>
+                <div class="row">
+                    <div>Promo and label</div>
+                    <div><a href="mailto:hilke@redbrickrecords.ch">Red Brick Records</a></div>
+                </div>
             </div>
         </div>
     </div>
+    <%- include('footer'); -%>
 </body>

@@ -1,0 +1,41 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" type="text/css" href="/css/general.css">
+  <link rel="stylesheet" type="text/css" href="/css/releases.css">
+
+  <title>hilke</title>
+</head>
+
+<body>
+    <%- include('header'); -%>
+  <h2><%= release.name %></h1>
+  <div class="container">
+      <div class="release-detail">
+          <div class="cover mt-80">
+            <img src="/assets/covers/<%= release.cover %>" alt="<%= release.name %>">
+          </div>
+          <div class="info mt-40">
+              <div class="title"><%= release.name %></div>
+              <div class="date"><%= release.date %></div>
+          </div>
+          <div class="button buttonLimette linkButton mt-20 mt-auto">
+            <a href="<%= release.link %>" target="_blank">listen</a>
+          </div>
+          <h3 class="mt-80">lyrics and credits</h2>
+          <div class="mt-40">coming soon...</div>
+      </div>
+    </div>
+
+  </div>
+
+  <%- include('footer'); -%>
+</body>
+</html>
