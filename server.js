@@ -30,6 +30,10 @@ app.get('/about', (req, res) => {
     res.render('about')
 })
 
+app.get('/connect', (req, res) => {
+    res.render('connect')
+})
+
 app.get('/music', (req, res) => {
     res.render('music', { releases: releases })
 })
