@@ -63,6 +63,10 @@ app.get('/team', (req, res) => {
     res.redirect('https://hilkeros.github.io/');
 })
 
+app.get('/reclaim', (req, res) => {
+    res.redirect('https://lichen.wiki/@hilk.eu/art-app/call-for-artists');
+})
+
 app.get('/greta', (req, res) => {
     res.render('greta', { peerConfig: peerConfig })
 })
